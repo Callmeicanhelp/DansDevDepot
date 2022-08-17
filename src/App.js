@@ -1,18 +1,18 @@
+import React, { useState } from 'react';
 import './App.css';
 import Nav from './components/Nav';
 import About from './components/About';
 import Resume from './components/Resume';
 import Portfolio from './components/Portfolio';
 import ContactForm from './components/Contact';
-import { useState } from 'react';
 
 function App() {
   const [projects] = useState([
-    { name:'Project 1', description: '', },
-    { name:'Project 2', description: '', },
-    { name:'Project 3', description: '', },
-    { name:'Project 4', description: '', },
-    { name:'Project 5', description: '', },
+    { name:'Project 1', description: '' },
+    { name:'Project 2', description: '' },
+    { name:'Project 3', description: '' },
+    { name:'Project 4', description: '' },
+    { name:'Project 5', description: '' },
   ]);
 
   const [currentProject, setCurrentProject] = useState(projects[0]);
@@ -20,7 +20,7 @@ function App() {
   const [contactSelected, setContactSelected] = useState(false);
 
   return (
-    <div className="App">
+    <div>
       <Nav
         projects={projects}
         setCurrentProject={setCurrentProject}
@@ -32,7 +32,7 @@ function App() {
         {!contactSelected ? (
           <>
             <About></About>
-            <Portfolio></Portfolio>
+            <Portfolio currentProject={currentProject}></Portfolio>
             <Resume></Resume>
           </>
         ) : (

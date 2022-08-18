@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from '../Modal';
 
-const Projects = ({ project }) => {
+const Portfolio = ({ name }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState();
 
@@ -23,7 +23,7 @@ const Projects = ({ project }) => {
     }
   ]);
 
-  const currentProjects = projects.filter(project => project.name === project);
+  const currentProjects = projects.filter(project => project.name === name);
 
   const toggleModal = (image, i) => {
     setCurrentProject({ ...image, index: i });
@@ -38,8 +38,8 @@ const Projects = ({ project }) => {
       <div className="flex-row">
         {currentProjects.map((image, i) => (
           <img
-            // src={require(`../../assets/small/${category}/${i}.jpg`)}
-            // alt={image.name}
+            // src={require(`../../assets/small/${name}/${i}.jpg`)}
+            alt={image.name}
             // className="img-thumbnail mx-1"
             // onClick={() => toggleModal(image, i)}
             // key={image.name}

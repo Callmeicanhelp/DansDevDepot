@@ -7,7 +7,7 @@ import Portfolio from './components/Portfolio';
 import ContactForm from './components/Contact';
 
 function App() {
-  const [projects] = useState([
+  const [portfolio] = useState([
     { name:'Project 1', description: '' },
     { name:'Project 2', description: '' },
     { name:'Project 3', description: '' },
@@ -15,14 +15,14 @@ function App() {
     { name:'Project 5', description: '' },
   ]);
 
-  const [currentProject, setCurrentProject] = useState(projects[0]);
+  const [currentProject, setCurrentProject] = useState(portfolio[0]);
 
   const [contactSelected, setContactSelected] = useState(false);
 
   return (
     <div>
       <Nav
-        projects={projects}
+        portfolio={portfolio}
         setCurrentProject={setCurrentProject}
         currentProject={currentProject}
         contactSelected={contactSelected}

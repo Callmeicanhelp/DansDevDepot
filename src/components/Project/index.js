@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const Portfolio = ({ name }) => {
+const Project = ({ name }) => {
+  const [currentProject, setCurrentProject] = useState();
 
   const [projects] = useState([
     {
@@ -20,15 +21,13 @@ const Portfolio = ({ name }) => {
     }
   ]);
 
-  const currentProjects = projects.filter(project => project.name === name);
-
 
   return (
     <div>
-      
+
     </div>
   );
 
 };
 
-export default Portfolio;
+export default Project;

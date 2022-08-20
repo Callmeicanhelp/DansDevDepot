@@ -1,16 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers";
 
-function Nav(props) {
-  // const [pages] = useState([
-  //   { name: 'about me', description: '' },
-  //   { name: 'portfolio', description: '' },
-  //   { name: 'contact', description: '' },
-  //   { name: 'resume', description: '' },
-  // ]);
-  // const [currentPage, setCurrentPage] = useState(pages[0]);
 
+
+function Header(props) {
   const {
-    pages =[],
+    projects =[],
     contactSelected,
     portfolioSelected,
     aboutSelected,
@@ -67,7 +62,7 @@ function Nav(props) {
         </ul>
       </nav>
     </header>
-  ) 
-}  
+  )
+};
 
-export default Nav;
+export default Header;

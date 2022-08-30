@@ -1,51 +1,49 @@
-import React, { useState } from 'react';
-import './App.css';
-import Nav from './components/Nav';
-import About from './components/About';
-import Resume from './components/Resume';
-import Header from './components/Header';
-import Portfolio from './components/Portfolio';
-import ContactForm from './components/Contact';
-import Project from './components/Project';
-import Footer from './components/Footer';
+import React, { useState } from "react";
+import "./App.css";
+import Nav from "./components/Nav";
+import About from "./components/About";
+import Resume from "./components/Resume";
+import Portfolio from "./components/Portfolio";
+import ContactForm from "./components/Contact";
+import Project from "./components/Project";
+import Footer from "./components/Footer";
 
 function App() {
   const [pages] = useState([
-    { name:'About Me', description: '' },
-    { name:'Portfolio', description: '' },
-    { name:'Contact Me', description: '' },
-    { name:'Resume', description: '' },
+    { name: "about", description: "" },
+    { name: "portfolio", description: "" },
+    { name: "contact", description: "" },
+    { name: "resume", description: "" },
   ]);
+
+  const [currentPage, setCurrentPage] = useState(pages[0]);
 
   const [portfolioSelected, setPortfolioSelected] = useState(false);
 
   const [contactSelected, setContactSelected] = useState(false);
 
-  const [pagesSelected, setPagesSelected] = useState(false);
+  const [pageSelected, setPageSelected] = useState(false);
 
   const [aboutSelected, setAboutSelected] = useState(false);
 
   const [resumeSelected, setResumeSelected] = useState(false);
 
-
   return (
     <div>
-      <Header>
-        <Nav
-          pages={pages}
-          setPortfolioSelected={setPortfolioSelected}
-          portfolioSelected={portfolioSelected}
-          setContactSelected={setContactSelected}
-          contactSelected={contactSelected}
-          setPagesSelected={setPagesSelected}
-          pagesSelected={pagesSelected}
-          setAboutSelected={setAboutSelected}
-          aboutSelected={aboutSelected}
-          setResumeSelected={setResumeSelected}
-          resumeSelected={resumeSelected}
-
-        ></Nav>
-      </Header>
+      <Nav
+        setCurrentPage={setCurrentPage}
+        currentPage={currentPage}
+        setPortfolioSelected={setPortfolioSelected}
+        portfolioSelected={portfolioSelected}
+        setContactSelected={setContactSelected}
+        contactSelected={contactSelected}
+        setPageSelected={setPageSelected}
+        pageSelected={pageSelected}
+        setAboutSelected={setAboutSelected}
+        aboutSelected={aboutSelected}
+        setResumeSelected={setResumeSelected}
+        resumeSelected={resumeSelected}
+      />
       <main>
         {!aboutSelected ? 
          (
@@ -55,7 +53,7 @@ function App() {
             <Resume></Resume>
           </>
         ) : (
-            <About aboutSelected={aboutSelected}></About>
+            <About currentPage={currentPage}></About>
           )},
         {!portfolioSelected ? 
          (
@@ -65,33 +63,46 @@ function App() {
             <Resume></Resume>
           </>
         ) : (
-            <Portfolio portfolioSelected={portfolioSelected}></Portfolio>
+            <Portfolio currentPage={currentPage}></Portfolio>
           )},
         {!contactSelected ? 
-         (
+        (
           <>
-            <Portfolio><Project></Project></Portfolio>
-            <About></About>
-            <Resume></Resume>
+            <Portfolio>
+              <Project />
+            </Portfolio>
+            <About />
+            <Resume />
           </>
         ) : (
-            <ContactForm contactSelected={contactSelected}></ContactForm>
-          )},
+          <ContactForm currentPage={currentPage} />
+        )},
         {!resumeSelected ? 
          (
           <>
-            <Portfolio><Project></Project></Portfolio>
-            <About></About>
-            <ContactForm></ContactForm>
+            <Portfolio>
+              <Project />
+            </Portfolio>
+            <About />
+            <ContactForm/>
           </>
         ) : (
-            <Resume resumeSelected={resumeSelected}></Resume>
-          )}             
+            <Resume
+              currentPage={currentPage}
+              setResumeSelected
+            />
+        )}
+        {
+
+          
+        }
+        {/* <About/>
+        <Portfolio><Project/></Portfolio>
+        <ContactForm/>
+        <Resume/> */}
           
       </main>
-      <Footer>
-
-      </Footer>
+      <Footer />
     </div>
   );
 }

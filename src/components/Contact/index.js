@@ -33,13 +33,14 @@ function ContactForm() {
     
     <section>
       <h1 data-testid="contact" >Contact me</h1>
+      <p>Submit your info and a brief message and I will reach out to you as soon as I can!</p>
       <form id="contact-form">
         <div>
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Name:</label><br/>
           <input type="text" defaultValue={name} onBlur={handleChange} name="name" />
         </div>
         <div>
-          <label htmlFor="email">Email address:</label>
+          <label htmlFor="email">Email address:</label><br/>
           <input type="email" defaultValue={email} onBlur={handleChange} name="email" />
         </div>
         <div>

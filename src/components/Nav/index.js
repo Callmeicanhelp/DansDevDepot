@@ -1,16 +1,13 @@
 import React from "react";
+import { capitalizeFirstLetter } from "../../utils/helpers";
+
 
 function Nav(props) {
-  // const [pages] = useState([
-  //   { name: 'about me', description: '' },
-  //   { name: 'portfolio', description: '' },
-  //   { name: 'contact', description: '' },
-  //   { name: 'resume', description: '' },
-  // ]);
-  // const [currentPage, setCurrentPage] = useState(pages[0]);
 
   const {
     pages =[],
+    setCurrentPage,
+    currentPage,
     contactSelected,
     portfolioSelected,
     aboutSelected,
@@ -25,7 +22,7 @@ function Nav(props) {
     <header className="flex-row px-1">
       <h2>
         <a data-testid="link" href="/">
-          <span role="img" aria-label="">Daniel's Dev Depot</span> 
+          <span>Daniel's Dev Depot</span> 
         </a>
       </h2>
       <nav>
@@ -47,23 +44,23 @@ function Nav(props) {
           <span onClick={() => setResumeSelected(true)}>Resume</span>
           </li>
 
-          {/* {projects.map((project) => (
+          {pages.map((page) => (
             <li
               className={`mx-1 ${
-                currentProject.name === project.name
+                currentPage.name === page.name
                 }`}
-              key={project.name}
-            > */}
-              {/* <span
+              key={page.name}
+            >
+              <span
                 onClick={() => {
-                  setCurrentProject(project);
+                  setCurrentPage(page);
                   setContactSelected(false);
                 }}
               >
-                {capitalizeFirstLetter(project.name)}
-              </span> */}
-            {/* </li>
-          ))} */}
+                {capitalizeFirstLetter(page.name)}
+              </span>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

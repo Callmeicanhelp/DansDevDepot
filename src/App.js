@@ -4,12 +4,13 @@ import Nav from "./components/Nav";
 import About from "./components/About";
 import Resume from "./components/Resume";
 import Portfolio from "./components/Portfolio";
-import ContactForm from "./components/Contact";
-import Project from "./components/Project";
+import Contact from "./components/Contact";
+// import Project from "./components/Project";
 import Footer from "./components/Footer";
 
 function App() {
   const [pages] = useState([
+    { name: "nav", description: "" },
     { name: "about", description: "" },
     { name: "portfolio", description: "" },
     { name: "contact", description: "" },
@@ -17,6 +18,8 @@ function App() {
   ]);
 
   const [currentPage, setCurrentPage] = useState(pages[0]);
+
+  const [navSelected, setNavSelected] = useState(false);
 
   const [portfolioSelected, setPortfolioSelected] = useState(false);
 
@@ -31,6 +34,8 @@ function App() {
   return (
     <div>
       <Nav
+        setNavSelected={setNavSelected}
+        navSelected={navSelected}
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         setPortfolioSelected={setPortfolioSelected}
@@ -45,62 +50,27 @@ function App() {
         resumeSelected={resumeSelected}
       />
       <main>
-        {!aboutSelected ? 
-         (
+        {navSelected ? (
+          <>{/* <Nav id="nav" /> */}</>
+        ) : aboutSelected ? (
           <>
-            <Portfolio><Project></Project></Portfolio>
-            <ContactForm></ContactForm>
-            <Resume></Resume>
+            <About id="about" />
+          </>
+        ) : portfolioSelected ? (
+          <>
+            <Portfolio id="portfolio" />
+          </>
+        ) : contactSelected ? (
+          <>
+            <Contact id="contact" />
+          </>
+        ) : resumeSelected ? (
+          <>
+            <Resume id="resume" />
           </>
         ) : (
-            <About currentPage={currentPage}></About>
-          )},
-        {!portfolioSelected ? 
-         (
-          <>
-            <ContactForm></ContactForm>
-            <About></About>
-            <Resume></Resume>
-          </>
-        ) : (
-            <Portfolio currentPage={currentPage}></Portfolio>
-          )},
-        {!contactSelected ? 
-        (
-          <>
-            <Portfolio>
-              <Project />
-            </Portfolio>
-            <About />
-            <Resume />
-          </>
-        ) : (
-          <ContactForm currentPage={currentPage} />
-        )},
-        {!resumeSelected ? 
-         (
-          <>
-            <Portfolio>
-              <Project />
-            </Portfolio>
-            <About />
-            <ContactForm/>
-          </>
-        ) : (
-            <Resume
-              currentPage={currentPage}
-              setResumeSelected
-            />
+          <Nav id="nav" />
         )}
-        {
-
-          
-        }
-        {/* <About/>
-        <Portfolio><Project/></Portfolio>
-        <ContactForm/>
-        <Resume/> */}
-          
       </main>
       <Footer />
     </div>
